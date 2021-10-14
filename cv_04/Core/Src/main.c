@@ -152,15 +152,15 @@ int main(void)
 	  }
 
 
-	  if (HAL_GetTick >= tick+1000)
+	  if (HAL_GetTick() >= tick+1000)
 	  {
 		  state = SHOW_POT;
 	  }
 
-	  if (state = SHOW_POT)
+	  if (state == SHOW_POT)
 	  {
 		  sct_value(raw_pot*(500+1)/4096, raw_pot*(8+1)/4096);
-	  } else if (state = SHOW_TEMP)
+	  } else if (state == SHOW_TEMP)
 	  {
 		  int32_t temperature = (raw_temp - (int32_t)(*TEMP30_CAL_ADDR));
 		  temperature = temperature * (int32_t)(110 - 30);
@@ -168,7 +168,7 @@ int main(void)
 		  temperature = temperature + 30;
 		   sct_value(temperature, 0);
 	  }
-	  else if (state = SHOW_VOLT)
+	  else if (state == SHOW_VOLT)
 	  {
 		  uint32_t voltage = 330 * (*VREFINT_CAL_ADDR) / raw_volt;
 		  sct_value(voltage, 0);
