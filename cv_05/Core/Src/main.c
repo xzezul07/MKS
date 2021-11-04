@@ -156,7 +156,7 @@ static void uart_process_command(char *cmd)
 	{
 		token = strtok(NULL, " ");
 		addr = atoi(token);
-		HAL_I2C_Mem_Read(&hi2c1, EEPROM_ADDR, addr, I2C_MEMADD_SIZE_16BIT, value_dump, sizeof value_dump, 1000);
+		HAL_I2C_Mem_Read(&hi2c1, EEPROM_ADDR, addr, I2C_MEMADD_SIZE_16BIT, value_dump, sizeof(value_dump), 1000);
 
 		uint8_t dump_index;
 		for (dump_index=0; dump_index<sizeof value_dump; dump_index++)
